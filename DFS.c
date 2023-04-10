@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int v=5;
+int m[10][10]={{0,1,1,0,0},{1,0,0,1,1},{1,0,0,0,1},{0,1,0,0,0},{0,1,1,0,0}};
+int source=1, visited[10];
+
+void dfs(int m[10][10],int v, int source)
+{
+    int i;
+    visited[source]=1;
+
+    for(i=0;i<v;i++)
+    {
+        if(m[source][i]==1&&visited[i]==0)
+        {
+            printf("%d\t",i);
+            dfs(m,v,i);
+        }
+    }
+}
+
+int main()
+{
+    int i=0;
+    for(i=0;i<v;i++)
+    {
+        visited[i]=0;
+    }
+
+    printf("the DFS traversal is:\n");
+    printf("%d\t",source);
+    dfs(m,v,source);
+
+    return 0;
+}
+
